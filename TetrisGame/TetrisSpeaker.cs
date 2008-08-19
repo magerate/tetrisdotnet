@@ -37,9 +37,6 @@ namespace TetrisGame
                 case TetrisAction.Start:
                     PlaySound("start.wav");
                     break;
-                //case TetrisAction.Rotate:
-                //    PlaySound("transform.wav");
-                //    break;
                 case TetrisAction.End:
                     switch (tetris.TetrisModel.Status)
                     {
@@ -58,13 +55,12 @@ namespace TetrisGame
             }
         }
 
-
         private void PlaySound(string fileName)
         {
             if (SoundOn)
             {
                 player.SoundLocation = GetSoundFullPath(fileName);
-                player.Play(); 
+                player.Play();
             }
         }
 
