@@ -10,6 +10,7 @@ namespace TetrisGame
     public partial class Form1 : Form
     {
         private AutoDropTetris autoDropTetris;
+        private TetrisSpeaker speaker;
         public Form1()
         {
             InitializeComponent();
@@ -19,6 +20,8 @@ namespace TetrisGame
         {
             base.OnLoad(e);
             autoDropTetris = new AutoDropTetris(tetrisBox1.Tetris);
+            speaker = new TetrisSpeaker(autoDropTetris);
+
             labelHeight.DataBindings.Add("Text", tetrisBox1.Tetris, "CurrentHeight");
             labelKilled.DataBindings.Add("Text", tetrisBox1.Tetris, "KilledRows");
             labelScore.DataBindings.Add("Text", tetrisBox1.Tetris, "Score");

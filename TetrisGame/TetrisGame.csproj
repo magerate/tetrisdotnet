@@ -155,6 +155,7 @@
     <Compile Include="TetrisBox.Designer.cs">
       <DependentUpon>TetrisBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="TetrisSpeaker.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
@@ -180,6 +181,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\diablo3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sound\btn.wav" />
+    <Content Include="Sound\fadelayer.wav" />
+    <Content Include="Sound\lost.wav" />
+    <Content Include="Sound\ReadyGo.WAV" />
+    <Content Include="Sound\transform.wav" />
+    <Content Include="Sound\win.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
