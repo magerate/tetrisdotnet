@@ -9,15 +9,23 @@ namespace TetrisGame
 {
     public class TetrisSpeaker
     {
-        private SoundPlayer player;
+        enum TetrisSound
+        {
+            Start, Bump, Kill, Win, Lost
+        }
 
+        const string SoundPath = "Sound";
+
+        private SoundPlayer player;
         private ITetris tetris;
+
         public Tetris TetrisModel
         {
             get { return tetris.TetrisModel; }
         }
 
         public bool SoundOn { get; set; }
+
         public TetrisSpeaker(ITetris tetris)
         {
             SoundOn = true;
@@ -26,8 +34,8 @@ namespace TetrisGame
 
             tetris.TetrisModel.Changed += TetrisChanged;
 
-            tetris.TetrisModel.Bumped += delegate { PlaySound("bump.wav"); };
-            tetris.TetrisModel.RowsKilled += delegate { PlaySound("kill.wav"); };
+            tetris.TetrisModel.Bumped += delegate { PlaySound(TetrisSound.Bump); };
+            tetris.TetrisModel.RowsKilled += delegate { PlaySound(TetrisSound.Kill); };
         }
 
         private void TetrisChanged(object sender, TetrisChangedEventArgs e)
@@ -35,16 +43,16 @@ namespace TetrisGame
             switch (e.Action)
             {
                 case TetrisAction.Start:
-                    PlaySound("start.wav");
+                    PlaySound(TetrisSound.Start);
                     break;
                 case TetrisAction.End:
                     switch (tetris.TetrisModel.Status)
                     {
                         case TetrisStatus.Won:
-                            PlaySound("win.wav");
+                            PlaySound(TetrisSound.Win);
                             break;
                         case TetrisStatus.Lost:
-                            PlaySound("lost.wav");
+                            PlaySound(TetrisSound.Lost);
                             break;
                         default:
                             break;
@@ -55,24 +63,48 @@ namespace TetrisGame
             }
         }
 
-        private void PlaySound(string fileName)
+        private void PlaySound(TetrisSound sound)
         {
             if (SoundOn)
             {
-                player.SoundLocation = GetSoundFullPath(fileName);
+                player.SoundLocation = GetSoundFullName(sound);
                 player.Play();
             }
         }
 
-        private string GetSoundFullPath(string fileName)
+        private string GetSoundFullName(TetrisSound sound)
         {
-            Assembly asm = Assembly.GetExecutingAssembly();
-#if DEBUG
-            return Path.GetDirectoryName(asm.Location) + @"\..\..\Sound\" + fileName;
-#else
-           return Path.GetDirectoryName(asm.Location) + "\\" + fileName;
-#endif
+            string fileName = string.Empty;
+            switch (sound)
+            {
+                case TetrisSound.Start:
+                    fileName = "start.wav";
+                    break;
+                case TetrisSound.Bump:
+                    fileName = "bump.wav";
+                    break;
+                case TetrisSound.Kill:
+                    fileName = "kill.wav";
+                    break;
+                case TetrisSound.Win:
+                    fileName = "win.wav";
+                    break;
+                case TetrisSound.Lost:
+                    fileName = "lost.wav";
+                    break;
+                default:
+                    break;
+            }
+            return GetSoundPath() + "\\" + fileName;
+        }
 
+        private string GetSoundPath()
+        {
+#if DEBUG
+            return TetrisUtility.GetTetrisPath() + @"\..\..\" + SoundPath;
+#else
+           return TetrisUtility.GetTetrisPath() + "\\" + SoundPath;
+#endif
         }
 
     }

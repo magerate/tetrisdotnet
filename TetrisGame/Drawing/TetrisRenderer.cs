@@ -49,7 +49,7 @@ namespace TetrisGame.Drawing
             this.bitmapTetris = bitmapTetris;
             this.colorMatrix = new ColorMatrix();
             this.rendererState = new TetrisRendererState(bitmapTetris, colorMatrix);
-            this.brushStrategy = DefaultBrushStrategy.Instance;
+            this.brushStrategy = RainbowBrushStrategy.Instance;
 
             stateTable = new Dictionary<TetrisStatus, TetrisRendererState>();
             stateTable.Add(TetrisStatus.Playing, rendererState);

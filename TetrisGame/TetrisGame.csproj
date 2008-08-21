@@ -85,9 +85,9 @@
     <Compile Include="Core\TetrisMisc.cs" />
     <Compile Include="Core\TetrisRandom.cs" />
     <Compile Include="Drawing\BrushStrategy.cs" />
+    <Compile Include="Drawing\CellTheme.cs" />
     <Compile Include="Drawing\EndRenderState.cs" />
     <Compile Include="Drawing\ImageBrushStrategy.cs" />
-    <Compile Include="Drawing\ImageBrushScheme.cs" />
     <Compile Include="Drawing\KillingRenderState.cs" />
     <Compile Include="Drawing\PinnedMemoryBlock.cs" />
     <Compile Include="Drawing\PinnedMemoryBitmapTetris.cs" />
@@ -156,6 +156,7 @@
       <DependentUpon>TetrisBox.cs</DependentUpon>
     </Compile>
     <Compile Include="TetrisSpeaker.cs" />
+    <Compile Include="TetrisUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

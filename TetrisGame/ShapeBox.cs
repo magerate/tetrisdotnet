@@ -11,7 +11,7 @@ namespace TetrisGame
     {
         private Size cellSize = new Size(24, 24);
         private TetrisShape shape;
-        private IBrushStrategy brushStrategy = DefaultBrushStrategy.Instance;
+        private IBrushStrategy brushStrategy = RainbowBrushStrategy.Instance;
 
         public IBrushStrategy BrushStrategy
         {

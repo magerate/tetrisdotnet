@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Collections.Generic;
+using System.IO;
 
 using System.Diagnostics;
 
@@ -11,9 +12,9 @@ namespace TetrisGame.Drawing
     {
         private List<Image> tileImages = new List<Image>();
 
-        public ImageBrushStrategy(string fileName)
+        public ImageBrushStrategy(CellTheme theme)
         {
-            Load(fileName);
+            Load(theme);
         }
 
         public Brush CreateBrush(int index, int width, int height, int offsetX, int offsetY)
@@ -36,17 +37,16 @@ namespace TetrisGame.Drawing
             Dispose(true);
         }
 
-        public void Load(string fileName)
+        public void Load(CellTheme theme)
         {
             Clear();
-            ImageBrushScheme ibs = new ImageBrushScheme();
-            foreach (Image image in ibs.Load(fileName))
+            foreach (Stream stream in theme)
             {
-                tileImages.Add(image);
+                tileImages.Add(new Bitmap(stream));
             }
         }
 
-        public void Clear()
+        private void Clear()
         {
             if (tileImages.Count > 0)
             {

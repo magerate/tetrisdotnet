@@ -29,7 +29,7 @@ namespace TetrisGame
             leftAutoTetris = new AutoDropTetris(tetrisBox1.Tetris);
             rightAutoTetris = new AutoDropTetris(tetrisBox2.Tetris);
 
-            ImageBrushStrategy brushStrategy = new ImageBrushStrategy(@"C:\Users\tomato\Desktop\Buff Face1\Buff Face1.ibs");
+            IBrushStrategy brushStrategy = RainbowBrushStrategy.Instance;
             tetrisBox1.Renderer.BrushStrategy = brushStrategy;
             tetrisBox2.Renderer.BrushStrategy = brushStrategy;
 

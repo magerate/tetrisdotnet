@@ -31,7 +31,7 @@ namespace TetrisGame
             tetrisBox1.Tetris.ShapeCreated += delegate
             { shapeBox1.Shape = tetrisBox1.Tetris.ShapeStrategy.Peek(); };
 
-            ImageBrushStrategy brushStrategy = new ImageBrushStrategy(@"C:\Users\tomato\Desktop\heart\heart.ibs");
+            IBrushStrategy brushStrategy = RainbowBrushStrategy.Instance;
             tetrisBox1.Renderer.BrushStrategy = brushStrategy;
             shapeBox1.BrushStrategy = brushStrategy;
 
