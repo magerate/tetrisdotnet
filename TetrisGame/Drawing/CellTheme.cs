@@ -20,6 +20,17 @@ namespace TetrisGame.Drawing
             Load(fileName);
         }
 
+        public CellTheme(int index)
+        {
+            Name = "New Theme"+index.ToString();
+            fileName = GetThemePath() + "\\" + Name + ".ibs";
+        }
+
+        public Stream this[int index]
+        {
+            get { return imageStreams[index]; }
+        }
+
         public void Load(string fileName)
         {
             if (imageStreams.Count > 0)
@@ -35,9 +46,9 @@ namespace TetrisGame.Drawing
             {
                 while (reader.Read())
                 {
-                    if (reader.Name == "name")
+                    if (reader.Name == "ImageBrushScheme" && reader.NodeType==XmlNodeType.Element)
                     {
-                        Name = reader.Value;
+                        Name = reader["name"];
                     }
 
                     if (reader.Name == "image")
@@ -87,14 +98,23 @@ namespace TetrisGame.Drawing
             imageStreams.Add(stream);
         }
 
-        public void Remove(int index)
+
+        public void Remove(Stream stream)
         {
-            imageStreams.RemoveAt(index);
+            imageStreams.Remove(stream);
         }
 
         public static string[] GetAllThemeFileNames()
         {
             return Directory.GetFiles(GetThemePath());
+        }
+
+        public static IEnumerable<CellTheme> GetAllThemes()
+        {
+            foreach (string name in GetAllThemeFileNames())
+            {
+                yield return new CellTheme(name);
+            }
         }
 
         private static string GetThemePath()

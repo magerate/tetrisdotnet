@@ -70,6 +70,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoDropTetris.cs" />
+    <Compile Include="CellThemeEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellThemeEditorForm.Designer.cs">
+      <DependentUpon>CellThemeEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CellThemeImageList.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Core\Judge.cs" />
     <Compile Include="Core\RowsKilled.cs" />
     <Compile Include="Core\RivalShapeStrategy.cs" />
@@ -111,6 +120,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CellThemeEditorForm.resx">
+      <DependentUpon>CellThemeEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
