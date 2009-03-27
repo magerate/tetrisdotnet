@@ -27,14 +27,14 @@ namespace TetrisGame.Drawing
         public void Clear(int index, int length)
         {
             IntPtr p = Marshal.UnsafeAddrOfPinnedArrayElement(block, index);
-            SaveNativeMethods.memset(p, 0, length);
+            SafeNativeMethods.memset(p, 0, length);
         }
 
         public void Offset(int index, int length, int offset)
         {
             IntPtr src = Marshal.UnsafeAddrOfPinnedArrayElement(block, index);
             IntPtr dst = Marshal.UnsafeAddrOfPinnedArrayElement(block, index + offset);
-            SaveNativeMethods.memcpy(dst, src, length);
+            SafeNativeMethods.memcpy(dst, src, length);
         }
 
         public void Dispose()

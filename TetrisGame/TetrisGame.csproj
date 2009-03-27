@@ -34,7 +34,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -44,7 +44,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -100,7 +100,7 @@
     <Compile Include="Drawing\KillingRenderState.cs" />
     <Compile Include="Drawing\PinnedMemoryBlock.cs" />
     <Compile Include="Drawing\PinnedMemoryBitmapTetris.cs" />
-    <Compile Include="Drawing\SaveNativeMethods.cs" />
+    <Compile Include="Drawing\SafeNativeMethods.cs" />
     <Compile Include="Drawing\TetrisPaint.cs" />
     <Compile Include="Drawing\TetrisRenderer.cs" />
     <Compile Include="Drawing\BitmapTetris.cs" />
@@ -194,15 +194,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\diablo3.jpg" />
-    <None Include="Scheme\Buff Face.ibs" />
-    <None Include="Scheme\heart.ibs" />
+    <None Include="theme\Buff Face.ibs" />
+    <None Include="theme\heart.ibs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Sound\btn.wav" />
-    <Content Include="Sound\fadelayer.wav" />
+    <Content Include="Sound\bump.wav" />
+    <Content Include="Sound\kill.wav" />
     <Content Include="Sound\lost.wav" />
-    <Content Include="Sound\ReadyGo.WAV" />
-    <Content Include="Sound\transform.wav" />
+    <Content Include="Sound\start.wav" />
     <Content Include="Sound\win.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

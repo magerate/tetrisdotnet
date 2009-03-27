@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-//using System.Reflection;
 
 namespace TetrisGame
 {
@@ -12,10 +11,9 @@ namespace TetrisGame
         [STAThread]
         static void Main()
         {
-            //Assembly asm = Assembly.GetExecutingAssembly();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CellThemeEditorForm());
+            Application.Run(new Form1());
         }
     }
 }

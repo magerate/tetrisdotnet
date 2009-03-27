@@ -182,7 +182,7 @@ namespace TetrisGame.Drawing
                 uint length = (uint)(bitmapData.Stride * bitmapData.Height);
                 void* src = (void*)bitmapData.Scan0;
                 void* dst = (void*)((byte*)src + offset * cellHeight * bitmapData.Stride);
-                SaveNativeMethods.memcpy(dst, src, length);
+                SafeNativeMethods.memcpy(dst, src, length);
             }
             Bitmap.UnlockBits(bitmapData);
         }

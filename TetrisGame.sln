@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TetrisGame", "TetrisGame\TetrisGame.csproj", "{FC5A6D76-F417-48F9-83F8-37E8DFE4951F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TetrisCore", "TetrisCore\TetrisCore.csproj", "{CBF8813F-08F4-4131-BD3B-D25654375E96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTetris", "WpfTetris\WpfTetris.csproj", "{A0FB248E-423F-47E5-81DC-83DC1DBC5E1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +11,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FC5A6D76-F417-48F9-83F8-37E8DFE4951F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC5A6D76-F417-48F9-83F8-37E8DFE4951F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC5A6D76-F417-48F9-83F8-37E8DFE4951F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC5A6D76-F417-48F9-83F8-37E8DFE4951F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBF8813F-08F4-4131-BD3B-D25654375E96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBF8813F-08F4-4131-BD3B-D25654375E96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBF8813F-08F4-4131-BD3B-D25654375E96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBF8813F-08F4-4131-BD3B-D25654375E96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0FB248E-423F-47E5-81DC-83DC1DBC5E1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0FB248E-423F-47E5-81DC-83DC1DBC5E1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0FB248E-423F-47E5-81DC-83DC1DBC5E1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0FB248E-423F-47E5-81DC-83DC1DBC5E1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
