@@ -5,7 +5,7 @@ using System.Security;
 namespace TetrisGame.Drawing
 {
     [SuppressUnmanagedCodeSecurity]
-    internal static class SaveNativeMethods
+    internal static class SafeNativeMethods
     {
         [DllImport("msvcrt.dll", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
         internal static extern unsafe void memcpy(void* dst, void* src, uint length);
