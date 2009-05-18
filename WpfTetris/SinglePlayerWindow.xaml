@@ -1,0 +1,32 @@
+﻿<Window x:Class="WpfTetris.SinglePlayerWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:src="clr-namespace:WpfTetris"
+    Title="Single Play" Height="732" Width="526" AllowsTransparency="False" WindowStyle="SingleBorderWindow" Background="White" ResizeMode="NoResize" Icon="/WpfTetris;component/tetris.ico">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="src:TetrisCommands.MoveLeft" 
+                        Executed="ExecuteMoveLeft"/> 
+        
+        <CommandBinding Command="src:TetrisCommands.MoveRight" 
+                        Executed="ExecuteMoveRight"/>
+        
+        <CommandBinding Command="src:TetrisCommands.Drop" 
+                        Executed="ExecuteDrop"/>
+        
+        <CommandBinding Command="src:TetrisCommands.DropToBottom" 
+                        Executed="ExecuteDropToBottom"/>
+        
+        <CommandBinding Command="src:TetrisCommands.Rotate" 
+                        Executed="ExecuteRotate"/>
+        
+        <CommandBinding Command="src:TetrisCommands.Play" 
+                        Executed="ExecutePlay"/>
+    </Window.CommandBindings>
+    
+    <Canvas Height="686" Width="506">
+        <src:TetrisBox Width="320" Height="640" x:Name="tetrisBox" Canvas.Left="16" Canvas.Top="16"></src:TetrisBox>
+        <src:ShapeBox Width="123" Height="120" x:Name="shapeBox" Canvas.Right="16" Canvas.Top="16"></src:ShapeBox>
+
+    </Canvas>
+</Window>

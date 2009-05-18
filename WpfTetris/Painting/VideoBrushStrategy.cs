@@ -10,7 +10,6 @@ using TetrisGame.Core;
 namespace WpfTetris.Painting
 {
     
-
     public class VideoBrushStrategy : IBrushStrategy
     {
         private Brush brush;
@@ -50,8 +49,6 @@ namespace WpfTetris.Painting
             MediaPlayer player = new MediaPlayer();
             player.Clock = clock;
 
-            //player.Open(new Uri(@"C:\Users\Public\Videos\Sample Videos\butterfly.wmv", UriKind.Absolute));
-            //player.IsMuted = true;
 
             VideoDrawing videoDrawing = new VideoDrawing();
             videoDrawing.Player = player;
@@ -65,12 +62,6 @@ namespace WpfTetris.Painting
                 videoDrawing.Rect = new Rect(0.0, 0.0, cellWidth * grid.Width, cellHeight * grid.Height);
             }
 
-            //player.Play();
-            //player.MediaEnded += delegate 
-            //{
-            //    player.Position = TimeSpan.Zero;
-            //    player.Play(); 
-            //};
             DrawingBrush drawingBrush = new DrawingBrush(videoDrawing);
             if (TileMode.Tile == tileMode)
             {

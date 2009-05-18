@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TetrisGame.Core
 {
-    public class Tetris : ITetrisDecorator
+    public class Tetris : ITetris
     {
         private RotateDirection rotateDirection;
 
@@ -45,14 +45,14 @@ namespace TetrisGame.Core
         #region "Events"
 
         public event EventHandler<EventArgs> ShapeCreated;
-        public event EventHandler Resize;
         public event EventHandler Bumped;
+        public event EventHandler GameOver;
 
-        private void OnResize(EventArgs e)
+        private void OnGameOver(EventArgs e)
         {
-            if (Resize != null)
+            if (GameOver!=null)
             {
-                Resize(this, e);
+                GameOver(this, e);
             }
         }
 
@@ -93,6 +93,11 @@ namespace TetrisGame.Core
         {
             grid.Reset();
             CreateNextShape();
+        }
+
+        public void End()
+        {
+            OnGameOver(EventArgs.Empty);
         }
 
         public void DropToBottom()
@@ -174,10 +179,6 @@ namespace TetrisGame.Core
             {
                 End();
             }
-        }
-
-        private void End()
-        {
         }
 
         private void CreateNextShape()

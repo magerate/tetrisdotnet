@@ -13,7 +13,7 @@ namespace TetrisGame.Core
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public StatisticalTetris(ITetrisDecorator tetris)
+        public StatisticalTetris(ITetris tetris)
             : base(tetris)
         {
             tetris.TetrisModel.Bumped += delegate { ShapeCount++; };
@@ -22,9 +22,19 @@ namespace TetrisGame.Core
                 KilledCount += e.KilledRows.Count;
                 Score += e.KilledRows.Count * 100;
             };
+        }
+
+        private void Initialize()
+        {
             score = 0;
             shapeCount = 0;
             killedCount = 0;
+        }
+
+        public override void Start()
+        {
+            Initialize();
+            base.Start();
         }
 
         public int Score

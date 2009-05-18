@@ -32,7 +32,8 @@ namespace TetrisGame.Core
                         new TetrisPoint(1,1),new TetrisPoint(2,1)};
 
                 default:
-                    return null;
+                    return new TetrisPoint[4]{new TetrisPoint(0,0),new TetrisPoint(1,0),
+                        new TetrisPoint(1,1),new TetrisPoint(0,1)};
             }
         }
 

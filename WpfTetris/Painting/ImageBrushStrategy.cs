@@ -14,7 +14,8 @@ namespace WpfTetris.Painting
 
         public ImageBrushStrategy()
             : this(CellTheme.GetDefaultThemeFileName())
-        {}
+        { }
+
         public ImageBrushStrategy(string fileName)
             : this(new CellTheme(fileName))
         { }

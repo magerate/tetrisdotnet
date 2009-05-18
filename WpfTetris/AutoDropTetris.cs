@@ -9,7 +9,7 @@ namespace WpfTetris
     {
         private DispatcherTimer timer;
 
-        public AutoDropTetris(ITetrisDecorator tetris)
+        public AutoDropTetris(ITetris tetris)
             : base(tetris)
         {
             timer = new DispatcherTimer();
@@ -21,6 +21,12 @@ namespace WpfTetris
         {
             timer.Start();
             base.Start();
+        }
+
+        public override void End()
+        {
+            timer.Stop();
+            base.End();
         }
 
     }

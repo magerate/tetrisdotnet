@@ -31,6 +31,11 @@ namespace WpfTetris.Painting
             brush.TileMode = TileMode.Tile;
             brush.Viewport = new Rect(0.0, 0.0, cellWidth, cellHeight);
             brush.ViewportUnits = BrushMappingMode.Absolute;
+
+            if (offsetX != 0.0 || offsetY != 0.0)
+            {
+                brush.Transform = new TranslateTransform(offsetX, offsetY);                
+            }
         }
     }
 }

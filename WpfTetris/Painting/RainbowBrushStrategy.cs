@@ -22,7 +22,8 @@ namespace WpfTetris.Painting
             drawingGroup.Children.Add(rectDrawing);
             drawingGroup.BitmapEffect = new BevelBitmapEffect();
             DrawingBrush drawingBrush = new DrawingBrush(drawingGroup);
-            TetrisBrushHelper.SetTileBrush(drawingBrush, cellWidth, cellHeight, offsetX, offsetY);
+            TetrisBrushHelper.SetTileBrush(drawingBrush, 
+                cellWidth, cellHeight,offsetX, offsetY);
             drawingBrush.Freeze();
 
             return drawingBrush;

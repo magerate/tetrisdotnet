@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using System.ComponentModel;
+
 namespace TetrisGame.Core
 {
-    public abstract class TetrisGrid
+    public abstract class TetrisGrid:INotifyPropertyChanged
     {
         public const int DefaultWidth = 10;
         public const int DefaultHeight = 20;
@@ -26,6 +28,15 @@ namespace TetrisGame.Core
 
         public event EventHandler<EventArgs> Cleared;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
         protected TetrisGrid()
         {
@@ -45,6 +56,7 @@ namespace TetrisGame.Core
                 {
                     currentHeight = value;
                     //raise the event
+                    OnPropertyChanged("CurrentHeight");
                 }
             }
         }

@@ -5,41 +5,57 @@ using TetrisGame.Core;
 using WpfTetris.Painting;
 namespace WpfTetris
 {
-    
+
     public class TetrisBox : FrameworkElement
     {
-        private Tetris tetris;
-        private AutoDropTetris autoTetris;
+        private ITetris tetris;
+
         IBrushStrategy brushStrategy;
 
+        public IBrushStrategy BrushStrategy
+        {
+            get { return brushStrategy; }
+            set { brushStrategy = value; }
+        }
+
+        public ITetris Tetris
+        {
+            get { return tetris; }
+            set
+            {
+                tetris = value;
+                HookTetris(tetris.TetrisModel);
+            }
+        }
 
         public TetrisBox()
         {
-            TetrisGrid grid=new ByteGrid();
-            tetris = new Tetris(new ShapeStrategy(),grid );
-            autoTetris = new AutoDropTetris(tetris);
-            brushStrategy = new VideoBrushStrategy(grid);
+            var grid = new ByteGrid();
+            var shapeStrategy = new ShapeStrategy();
+            var baseTetris = new Tetris(shapeStrategy, grid);
+            tetris = new AutoDropTetris(baseTetris);
 
-            tetris.ShapeCreated += delegate 
-            { 
-                InvalidateVisual();
-                tetris.CurrentShape.Transformed += delegate { InvalidateVisual(); };
-            };
-            tetris.Grid.RowsKilled += delegate { InvalidateVisual(); };
+            HookTetris(baseTetris);
         }
 
         protected override void OnRender(DrawingContext drawingContext)
         {
+            Pen pen = new Pen(Brushes.Black, 0.15);
+            TetrisPaint.DrawGrid(drawingContext, pen,
+                new Size(32.0, 32.0), new Size(10.0, 20.0), new Point());
+
             //base.OnRender(drawingContext);
-            double cellWidth = (RenderSize.Width )/ tetris.Grid.Width;
-            double cellHeight = (RenderSize.Height )/ tetris.Grid.Height;
-            DrawGrid(drawingContext,tetris.Grid,cellWidth, cellHeight);
-            if (tetris.CurrentShape != null)
+            if (tetris != null && brushStrategy != null)
             {
-                DrawShape(drawingContext, tetris.CurrentShape, cellWidth, cellHeight);
+                Tetris baseTetris = tetris.TetrisModel;
+                double cellWidth = (RenderSize.Width) / baseTetris.Grid.Width;
+                double cellHeight = (RenderSize.Height) / baseTetris.Grid.Height;
+                DrawGrid(drawingContext, baseTetris.Grid, cellWidth, cellHeight);
+                if (baseTetris.CurrentShape != null)
+                {
+                    DrawShape(drawingContext, baseTetris.CurrentShape, cellWidth, cellHeight);
+                }
             }
-            Pen pen = new Pen(new SolidColorBrush(Colors.Black), 0.15);
-            TetrisPaint.DrawGrid(drawingContext, pen, new Size(32.0, 32.0), new Size(10.0, 20.0), new Point());
         }
 
 
@@ -62,30 +78,14 @@ namespace WpfTetris
             }
         }
 
-       
-        public void Start()
+        private void HookTetris(Tetris tetris)
         {
-            autoTetris.Start();
-        }
-
-        public void MoveLeft()
-        {
-            tetris.MoveLeft();
-        }
-
-        public void MoveRight()
-        {
-            tetris.MoveRight();
-        }
-
-        public void Drop()
-        {
-            tetris.DropToBottom();
-        }
-
-        public void Rotate()
-        {
-            tetris.Rotate();
+            tetris.ShapeCreated += delegate
+            {
+                InvalidateVisual();
+                tetris.CurrentShape.Transformed += delegate { InvalidateVisual(); };
+            };
+            tetris.Grid.RowsKilled += delegate { InvalidateVisual(); };
         }
     }
 }

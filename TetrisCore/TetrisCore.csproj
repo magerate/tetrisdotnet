@@ -18,8 +18,6 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\bin\Debug\</OutputPath>
-    <BaseIntermediateOutputPath>..\obj\</BaseIntermediateOutputPath>
-    <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -28,8 +26,6 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release\</OutputPath>
-    <BaseIntermediateOutputPath>..\obj\</BaseIntermediateOutputPath>
-    <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -41,12 +37,8 @@
     <Compile Include="BitGrid.cs" />
     <Compile Include="ByteGrid.cs" />
     <Compile Include="EventMisc.cs" />
-    <Compile Include="GridCell.cs" />
-    <Compile Include="ShapeInfo.cs" />
     <Compile Include="TetrisDecorator.cs" />
-    <Compile Include="Judge.cs" />
     <Compile Include="Point.cs" />
-    <Compile Include="RivalShapeStrategy.cs" />
     <Compile Include="KilledRows.cs" />
     <Compile Include="ShapeHelper.cs" />
     <Compile Include="ShapeStrategy.cs" />

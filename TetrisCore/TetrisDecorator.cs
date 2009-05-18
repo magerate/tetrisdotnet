@@ -2,18 +2,25 @@
 
 namespace TetrisGame.Core
 {
-    public interface ITetrisDecorator
+    public interface ITetris
     {
         Tetris TetrisModel { get; }
 
         void Start();
+        void End();
+
+        void MoveLeft();
+        void MoveRight();
+        void Drop();
+        void DropToBottom();
+        void Rotate();
     }
 
-    public abstract class TetrisDecorator:ITetrisDecorator
+    public abstract class TetrisDecorator:ITetris
     {
-        protected ITetrisDecorator tetris;
+        protected ITetris tetris;
 
-        protected TetrisDecorator(ITetrisDecorator tetris)
+        protected TetrisDecorator(ITetris tetris)
         {
             this.tetris = tetris;
         }
@@ -26,6 +33,36 @@ namespace TetrisGame.Core
         public virtual void Start()
         {
             tetris.Start();
+        }
+
+        public virtual void End()
+        {
+            tetris.End();
+        }
+
+        public virtual void MoveLeft()
+        {
+            tetris.MoveLeft();
+        }
+
+        public virtual void MoveRight()
+        {
+            tetris.MoveRight();
+        }
+
+        public virtual void Drop()
+        {
+            tetris.Drop();
+        }
+
+        public virtual void DropToBottom()
+        {
+            tetris.DropToBottom();
+        }
+
+        public virtual void Rotate()
+        {
+            tetris.Rotate();
         }
     }
 }
